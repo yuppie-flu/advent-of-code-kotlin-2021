@@ -2,12 +2,14 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
-/**
- * Reads lines from the given input txt file.
- */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
+fun readInputAsStrings(name: String): List<String> = File("src", "$name.txt")
+    .readLines()
+    .map { it.trim() }
 
-/**
- * Converts string to md5 hash.
- */
-fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+fun readInputAsInts(name: String): IntArray = File("src", "$name.txt")
+    .readLines()
+    .map { it.trim().toInt() }
+    .toIntArray()
+
+fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
+    .toString(16)
