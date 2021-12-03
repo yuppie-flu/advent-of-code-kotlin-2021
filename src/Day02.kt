@@ -25,21 +25,21 @@ private fun parseMove(input: String): Move {
     return Move(Direction.valueOf(direction.uppercase()), distance.toInt())
 }
 
-interface Position {
+private interface Position {
     operator fun plus(move: Move): Position
     fun toResult(): Int
 }
 
-data class Move(
+private data class Move(
     val direction: Direction,
     val distance: Int
 )
 
-enum class Direction {
+private enum class Direction {
     FORWARD, UP, DOWN
 }
 
-data class SimplePosition(
+private data class SimplePosition(
     val horizontal: Int,
     val depth: Int
 ) : Position {
@@ -53,7 +53,7 @@ data class SimplePosition(
     override fun toResult(): Int = horizontal * depth
 }
 
-data class AdvancedPosition(
+private data class AdvancedPosition(
     val aim: Int,
     val horizontal: Int,
     val depth: Int
