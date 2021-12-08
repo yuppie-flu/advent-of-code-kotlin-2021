@@ -11,5 +11,13 @@ fun readInputAsInts(name: String): IntArray = File("src", "$name.txt")
     .map { it.trim().toInt() }
     .toIntArray()
 
+fun readSingleLineInputAsInts(name: String): IntArray = File("src", "$name.txt")
+    .readLines()
+    .map { it.trim() }
+    .single()
+    .split(',')
+    .map { it.toInt() }
+    .toIntArray()
+
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
